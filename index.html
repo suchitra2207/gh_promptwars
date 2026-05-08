@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Travel Experience Engine</title>
 
   <link rel="stylesheet" href="style.css" />
@@ -15,25 +16,43 @@
 
   <header>
     <h1>Travel Planning & Experience Engine</h1>
+
     <p>
       Explore destinations through an AntiGravity-inspired travel experience.
     </p>
   </header>
 
   <div class="planner-box">
+
     <input type="text" id="destinationInput" placeholder="Enter destination..." />
 
     <button id="addButton">
       Add Destination
     </button>
+
   </div>
 
   <div id="container"></div>
 
+  <!-- GOOGLE MAPS SECTION -->
+
+  <div class="map-container">
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d492479.7587212078!2d73.67674846900728!3d15.349486404941008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfba106336b741%3A0xeaf887ff62f34092!2sGoa!5e0!3m2!1sen!2sin!4v1778224072060!5m2!1sen!2sin"
+      width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+
+  </div>
+
+  <!-- TRIP PLANNER PANEL -->
+
   <div class="info-panel">
+
     <h2>Trip Planner</h2>
 
     <ul id="tripList"></ul>
+
   </div>
 
   <script src="script.js"></script>
