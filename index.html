@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Travel AntiGravity Engine</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Experience Engine</title>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <h1 class="title">Travel Experience Engine</h1>
+  <div class="background"></div>
 
-  <div class="card">Goa</div>
-  <div class="card">Tokyo</div>
-  <div class="card">Paris</div>
+  <header>
+    <h1>Travel Planning & Experience Engine</h1>
+    <p>
+      Explore destinations through an AntiGravity-inspired travel experience.
+    </p>
+  </header>
+
+  <div class="planner-box">
+    <input type="text" id="destinationInput" placeholder="Enter destination..." />
+
+    <button id="addButton">
+      Add Destination
+    </button>
+  </div>
+
+  <div id="container"></div>
+
+  <div class="info-panel">
+    <h2>Trip Planner</h2>
+
+    <ul id="tripList"></ul>
+  </div>
 
   <script src="script.js"></script>
 
 </body>
+
 </html>
