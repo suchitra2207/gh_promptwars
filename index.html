@@ -3,11 +3,34 @@
 
 <head>
 
+  <!-- GOOGLE ANALYTICS -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B74S9B3SK">
+  </script>
+
+  <script>
+
+    window.dataLayer =
+      window.dataLayer || [];
+
+    function gtag() {
+
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-8B74S9B3SK');
+
+  </script>
+
   <meta charset="UTF-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Travel Experience Engine</title>
+  <title>
+    Travel Experience Engine
+  </title>
 
   <!-- GOOGLE FONTS -->
 
@@ -45,7 +68,8 @@
     <header>
 
       <h1>
-        Travel Planning & Experience Engine
+        Travel Planning &
+        Experience Engine
       </h1>
 
       <p>
@@ -59,8 +83,9 @@
 
     <div class="ai-badge">
 
-      Powered by Google Maps &
-      Real Gemini AI Travel Planning
+      Powered by Google Maps,
+      Gemini AI &
+      Firebase Cloud Services
 
     </div>
 
@@ -78,7 +103,7 @@
 
     </div>
 
-    <!-- FLOATING DESTINATIONS -->
+    <!-- FLOATING DESTINATION CARDS -->
 
     <div id="container"></div>
 
@@ -86,7 +111,8 @@
 
     <h3 class="map-title">
 
-      Live Google Maps Destination Explorer
+      Live Google Maps
+      Destination Explorer
 
     </h3>
 
@@ -112,15 +138,24 @@
 
       <ul id="tripList"></ul>
 
-      <!-- TRAVEL INFO -->
+      <!-- EXTRA INFO -->
 
       <div class="travel-info">
 
-        <p>Budget Mode: Smart Saver</p>
+        <p>
+          Budget Mode:
+          Smart Saver
+        </p>
 
-        <p>AI Recommendations Enabled</p>
+        <p>
+          Gemini AI Recommendations
+          Enabled
+        </p>
 
-        <p>Live Destination Exploration</p>
+        <p>
+          Firebase Cloud Storage
+          Connected
+        </p>
 
       </div>
 
@@ -128,25 +163,31 @@
 
       <div class="budget-box">
 
-        <h3>Budget Estimator</h3>
+        <h3>
+          Budget Estimator
+        </h3>
 
         <p id="budgetValue">
 
-          Add destination to estimate budget.
+          Add destination
+          to estimate budget.
 
         </p>
 
       </div>
 
-      <!-- GEMINI ITINERARY -->
+      <!-- GEMINI AI -->
 
       <div class="itinerary-box">
 
-        <h3>AI Travel Itinerary</h3>
+        <h3>
+          AI Travel Itinerary
+        </h3>
 
         <p id="itineraryBox">
 
-          Gemini AI recommendations
+          Gemini AI itinerary
+          recommendations
           will appear here.
 
         </p>
@@ -157,7 +198,53 @@
 
   </main>
 
-  <!-- SCRIPT -->
+  <!-- FIREBASE SDK -->
+
+  <script type="module">
+
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import { getAnalytics }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+
+    const firebaseConfig = {
+
+      apiKey:
+        "AIzaSyAgpHP-Gyro4TnMtTSWhc4aHJM596kFH_M",
+
+      authDomain:
+        "travel-experience-engine.firebaseapp.com",
+
+      projectId:
+        "travel-experience-engine",
+
+      storageBucket:
+        "travel-experience-engine.firebasestorage.app",
+
+      messagingSenderId:
+        "334851838998",
+
+      appId:
+        "1:334851838998:web:6007a56500d93c45385137",
+
+      measurementId:
+        "G-6WV85HEW8G"
+    };
+
+    const app =
+      initializeApp(firebaseConfig);
+
+    const analytics =
+      getAnalytics(app);
+
+    console.log(
+      "Firebase Connected Successfully"
+    );
+
+  </script>
+
+  <!-- MAIN SCRIPT -->
 
   <script src="script.js"></script>
 
