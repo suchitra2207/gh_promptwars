@@ -1,16 +1,9 @@
-const container =
-  document.getElementById("container");
+const container = document.getElementById("container");
+const addButton = document.getElementById("addButton");
+const destinationInput = document.getElementById("destinationInput");
+const tripList = document.getElementById("tripList");
 
-const addButton =
-  document.getElementById("addButton");
-
-const destinationInput =
-  document.getElementById("destinationInput");
-
-const tripList =
-  document.getElementById("tripList");
-
-/* DEFAULT DESTINATIONS */
+const GEMINI_API_KEY = "PASTE_YOUR_API_KEY_HERE";
 
 const defaultDestinations = [
   "Goa",
@@ -20,48 +13,25 @@ const defaultDestinations = [
   "Manali"
 ];
 
-/* CREATE FLOATING CARD */
-
 function createCard(name) {
 
-  const card =
-    document.createElement("div");
+  const card = document.createElement("div");
 
   card.classList.add("card");
-
   card.innerText = name;
 
   container.appendChild(card);
 
-  /* RANDOM POSITION */
+  let x = Math.random() * (window.innerWidth - 300);
+  let y = Math.random() * (window.innerHeight - 300);
 
-  let x =
-    Math.random() *
-    (window.innerWidth - 300);
-
-  let y =
-    Math.random() *
-    (window.innerHeight - 300);
-
-  /* FLOATING SPEED */
-
-  let speed =
-    0.5 + Math.random() * 1.5;
-
-  /* ROTATION */
-
-  let angle =
-    Math.random() * 360;
-
-  /* FLOAT ANIMATION */
+  let speed = 0.5 + Math.random() * 1.5;
+  let angle = Math.random() * 360;
 
   function animate() {
 
     y -= speed;
-
     angle += 0.1;
-
-    /* RESET POSITION */
 
     if (y < -200) {
       y = window.innerHeight + 100;
@@ -82,92 +52,80 @@ function createCard(name) {
   enableDragging(card);
 }
 
-/* ADD TO TRIP LIST */
-
 function addTripDestination(name) {
 
-  const item =
-    document.createElement("li");
-
+  const item = document.createElement("li");
   item.innerText = name;
 
   tripList.appendChild(item);
 }
 
-/* DRAG FUNCTIONALITY */
-
 function enableDragging(card) {
 
   let isDragging = false;
 
-  let offsetX = 0;
-  let offsetY = 0;
-
-  card.addEventListener("mousedown", (e) => {
-
+  card.addEventListener("mousedown", () => {
     isDragging = true;
+  });
 
-    offsetX = e.clientX;
-    offsetY = e.clientY;
-
-    card.style.cursor = "grabbing";
+  window.addEventListener("mouseup", () => {
+    isDragging = false;
   });
 
   window.addEventListener("mousemove", (e) => {
 
     if (!isDragging) return;
 
-    const dx =
-      e.clientX - offsetX;
-
-    const dy =
-      e.clientY - offsetY;
-
-    offsetX = e.clientX;
-    offsetY = e.clientY;
-
-    card.style.left =
-      `${card.offsetLeft + dx}px`;
-
-    card.style.top =
-      `${card.offsetTop + dy}px`;
-  });
-
-  window.addEventListener("mouseup", () => {
-
-    isDragging = false;
-
-    card.style.cursor = "grab";
+    card.style.left = `${e.clientX - 80}px`;
+    card.style.top = `${e.clientY - 80}px`;
   });
 }
 
-/* BUTTON CLICK */
+async function generateItinerary(destination) {
 
-addButton.addEventListener("click", () => {
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: `Create a short 3-day travel itinerary for ${destination}`
+              }
+            ]
+          }
+        ]
+      })
+    }
+  );
 
-  const value =
-    destinationInput.value.trim();
+  const data = await response.json();
+
+  const aiText =
+    data.candidates?.[0]?.content?.parts?.[0]?.text ||
+    "AI itinerary unavailable.";
+
+  alert(aiText);
+}
+
+addButton.addEventListener("click", async () => {
+
+  const value = destinationInput.value.trim();
 
   if (value === "") return;
 
   createCard(value);
 
+  await generateItinerary(value);
+
   destinationInput.value = "";
 });
 
-/* ENTER KEY SUPPORT */
-
-destinationInput.addEventListener("keypress", (e) => {
-
-  if (e.key === "Enter") {
-
-    addButton.click();
-  }
-});
-
-/* LOAD DEFAULT DESTINATIONS */
-
-defaultDestinations.forEach((destination) => {
-
+for (let destination of defaultDestinations) {
   createCard(destination);
-});
+}
