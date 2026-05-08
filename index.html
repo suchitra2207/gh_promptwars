@@ -6,8 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Travel Experience Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <meta name="description"
+    content="Interactive AI-powered travel planning and experience engine using AntiGravity-inspired UI and Google Maps integration.">
 </head>
 
 <body>
@@ -21,12 +26,15 @@
       Explore destinations through an AntiGravity-inspired travel experience.
     </p>
   </header>
+  <div class="ai-badge">
+    Powered by Google Maps & Gemini-inspired AI Planning
+  </div>
 
   <div class="planner-box">
 
-    <input type="text" id="destinationInput" placeholder="Enter destination..." />
+    <input type="text" aria-label="Destination Input" id="destinationInput" placeholder="Enter destination..." />
 
-    <button id="addButton">
+    <button id="addButton" aria-label="Add Destination Button">
       Add Destination
     </button>
 
@@ -52,6 +60,15 @@
     <h2>Trip Planner</h2>
 
     <ul id="tripList"></ul>
+    <div class="travel-info">
+
+      <p>Budget Mode: Smart Saver</p>
+
+      <p>AI Recommendations Enabled</p>
+
+      <p>Live Destination Exploration</p>
+
+    </div>
 
   </div>
 

@@ -6,7 +6,7 @@
 
 body {
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom, #020617, #0f172a);
   color: white;
   height: 100vh;
@@ -201,4 +201,19 @@ header p {
   border: none;
 
   display: block;
+}
+
+.ai-badge {
+
+  text-align: center;
+
+  margin-top: 15px;
+
+  color: #38bdf8;
+
+  font-weight: bold;
+
+  z-index: 5;
+
+  position: relative;
 }
