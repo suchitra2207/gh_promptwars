@@ -20,7 +20,7 @@ body {
   height: 100vh;
 }
 
-/* STAR BACKGROUND */
+/* BACKGROUND */
 
 .background {
 
@@ -48,9 +48,9 @@ header {
 
   padding-top: 30px;
 
-  z-index: 2;
-
   position: relative;
+
+  z-index: 5;
 }
 
 header h1 {
@@ -71,7 +71,9 @@ header p {
 
   text-align: center;
 
-  margin-top: 15px;
+  margin-top: 25px;
+
+  font-size: 14px;
 
   color: #38bdf8;
 
@@ -82,13 +84,13 @@ header p {
   z-index: 5;
 }
 
-/* INPUT SECTION */
+/* INPUT AREA */
 
 .planner-box {
 
   position: fixed;
 
-  top: 180px;
+  top: 200px;
   left: 50%;
 
   transform: translateX(-50%);
@@ -104,7 +106,7 @@ header p {
 
   padding: 14px;
 
-  width: 260px;
+  width: 280px;
 
   border-radius: 12px;
 
@@ -130,7 +132,7 @@ header p {
   font-weight: bold;
 }
 
-/* FLOATING CARD AREA */
+/* FLOATING AREA */
 
 #container {
 
@@ -191,9 +193,9 @@ header p {
   position: fixed;
 
   right: 20px;
-  top: 120px;
+  top: 140px;
 
-  width: 280px;
+  width: 290px;
 
   background:
     rgba(255, 255, 255, 0.08);
@@ -219,13 +221,13 @@ header p {
 
 .info-panel li {
 
-  padding: 8px 0;
+  padding: 10px 0;
 
   border-bottom:
     1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* EXTRA INFO */
+/* EXTRA TRAVEL INFO */
 
 .travel-info {
 
@@ -233,12 +235,14 @@ header p {
 
   font-size: 14px;
 
-  opacity: 0.8;
+  opacity: 0.85;
+
+  line-height: 1.6;
 }
 
 .travel-info p {
 
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* GOOGLE MAPS */
@@ -250,8 +254,8 @@ header p {
   bottom: 20px;
   left: 20px;
 
-  width: 400px;
-  height: 250px;
+  width: 420px;
+  height: 260px;
 
   z-index: 9999;
 
