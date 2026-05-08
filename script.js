@@ -1,7 +1,16 @@
-const container = document.getElementById("container");
-const addButton = document.getElementById("addButton");
-const destinationInput = document.getElementById("destinationInput");
-const tripList = document.getElementById("tripList");
+const container =
+  document.getElementById("container");
+
+const addButton =
+  document.getElementById("addButton");
+
+const destinationInput =
+  document.getElementById("destinationInput");
+
+const tripList =
+  document.getElementById("tripList");
+
+/* DEFAULT DESTINATIONS */
 
 const defaultDestinations = [
   "Goa",
@@ -11,30 +20,51 @@ const defaultDestinations = [
   "Manali"
 ];
 
+/* CREATE FLOATING CARD */
+
 function createCard(name) {
 
-  const card = document.createElement("div");
+  const card =
+    document.createElement("div");
 
   card.classList.add("card");
+
   card.innerText = name;
 
   container.appendChild(card);
 
-  let x = Math.random() * (window.innerWidth - 200);
-  let y = window.innerHeight + Math.random() * 400;
+  /* RANDOM POSITION */
 
-  let speed = 1 + Math.random() * 2;
+  let x =
+    Math.random() *
+    (window.innerWidth - 300);
 
-  let angle = Math.random() * 360;
+  let y =
+    Math.random() *
+    (window.innerHeight - 300);
+
+  /* FLOATING SPEED */
+
+  let speed =
+    0.5 + Math.random() * 1.5;
+
+  /* ROTATION */
+
+  let angle =
+    Math.random() * 360;
+
+  /* FLOAT ANIMATION */
 
   function animate() {
 
     y -= speed;
 
-    angle += 0.3;
+    angle += 0.1;
+
+    /* RESET POSITION */
 
     if (y < -200) {
-      y = window.innerHeight + 200;
+      y = window.innerHeight + 100;
     }
 
     card.style.transform = `
@@ -52,14 +82,19 @@ function createCard(name) {
   enableDragging(card);
 }
 
+/* ADD TO TRIP LIST */
+
 function addTripDestination(name) {
 
-  const item = document.createElement("li");
+  const item =
+    document.createElement("li");
 
   item.innerText = name;
 
   tripList.appendChild(item);
 }
+
+/* DRAG FUNCTIONALITY */
 
 function enableDragging(card) {
 
@@ -82,17 +117,20 @@ function enableDragging(card) {
 
     if (!isDragging) return;
 
-    const dx = e.clientX - offsetX;
-    const dy = e.clientY - offsetY;
+    const dx =
+      e.clientX - offsetX;
+
+    const dy =
+      e.clientY - offsetY;
 
     offsetX = e.clientX;
     offsetY = e.clientY;
 
-    const currentTransform =
-      getComputedStyle(card).transform;
+    card.style.left =
+      `${card.offsetLeft + dx}px`;
 
-    card.style.transform +=
-      ` translate(${dx}px, ${dy}px)`;
+    card.style.top =
+      `${card.offsetTop + dy}px`;
   });
 
   window.addEventListener("mouseup", () => {
@@ -103,9 +141,12 @@ function enableDragging(card) {
   });
 }
 
+/* BUTTON CLICK */
+
 addButton.addEventListener("click", () => {
 
-  const value = destinationInput.value.trim();
+  const value =
+    destinationInput.value.trim();
 
   if (value === "") return;
 
@@ -114,6 +155,19 @@ addButton.addEventListener("click", () => {
   destinationInput.value = "";
 });
 
-for (let destination of defaultDestinations) {
+/* ENTER KEY SUPPORT */
+
+destinationInput.addEventListener("keypress", (e) => {
+
+  if (e.key === "Enter") {
+
+    addButton.click();
+  }
+});
+
+/* LOAD DEFAULT DESTINATIONS */
+
+defaultDestinations.forEach((destination) => {
+
   createCard(destination);
-}
+});
