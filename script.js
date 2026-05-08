@@ -6,7 +6,7 @@ const budgetValue = document.getElementById("budgetValue");
 const itineraryBox = document.getElementById("itineraryBox");
 
 /* GEMINI API KEY */
-const GEMINI_API_KEY = "PASTE_YOUR_API_KEY_HERE";
+const GEMINI_API_KEY = "AIzaSyDxWFh_kUh9PLQKZ6-Ik92kHSIG3qldr-0";
 
 const defaultDestinations = [
   "Goa",
