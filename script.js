@@ -205,8 +205,20 @@ addButton.addEventListener(
   "click",
   async () => {
 
-    const value =
+    let value =
       destinationInput.value.trim();
+
+    /* FRIENDLY TEXT FORMAT */
+
+    value =
+      value
+        .toLowerCase()
+        .split(" ")
+        .map(word =>
+          word.charAt(0).toUpperCase() +
+          word.slice(1)
+        )
+        .join(" ");
 
     if (value === "") return;
 
