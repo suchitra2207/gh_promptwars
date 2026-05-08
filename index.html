@@ -36,6 +36,8 @@
 
   <main>
 
+    <!-- BACKGROUND -->
+
     <div class="background"></div>
 
     <!-- HEADER -->
@@ -56,8 +58,10 @@
     <!-- AI BADGE -->
 
     <div class="ai-badge">
+
       Powered by Google Maps &
-      Gemini-inspired AI Planning
+      Real Gemini AI Travel Planning
+
     </div>
 
     <!-- INPUT SECTION -->
@@ -74,9 +78,17 @@
 
     </div>
 
-    <!-- FLOATING CARD CONTAINER -->
+    <!-- FLOATING DESTINATIONS -->
 
     <div id="container"></div>
+
+    <!-- MAP TITLE -->
+
+    <h3 class="map-title">
+
+      Live Google Maps Destination Explorer
+
+    </h3>
 
     <!-- GOOGLE MAPS -->
 
@@ -90,13 +102,17 @@
 
     </div>
 
-    <!-- TRIP PLANNER -->
+    <!-- SIDE PANEL -->
 
     <div class="info-panel">
 
       <h2>Trip Planner</h2>
 
+      <!-- DESTINATION LIST -->
+
       <ul id="tripList"></ul>
+
+      <!-- TRAVEL INFO -->
 
       <div class="travel-info">
 
@@ -108,9 +124,40 @@
 
       </div>
 
+      <!-- BUDGET ESTIMATOR -->
+
+      <div class="budget-box">
+
+        <h3>Budget Estimator</h3>
+
+        <p id="budgetValue">
+
+          Add destination to estimate budget.
+
+        </p>
+
+      </div>
+
+      <!-- GEMINI ITINERARY -->
+
+      <div class="itinerary-box">
+
+        <h3>AI Travel Itinerary</h3>
+
+        <p id="itineraryBox">
+
+          Gemini AI recommendations
+          will appear here.
+
+        </p>
+
+      </div>
+
     </div>
 
   </main>
+
+  <!-- SCRIPT -->
 
   <script src="script.js"></script>
 
