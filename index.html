@@ -2,75 +2,115 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Travel Experience Engine</title>
+
+  <!-- GOOGLE FONTS -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- FAVICON -->
+
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/201/201623.png">
+
+  <!-- SEO -->
+
   <meta name="description"
     content="Interactive AI-powered travel planning and experience engine using AntiGravity-inspired UI and Google Maps integration.">
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
 
-  <div class="background"></div>
+  <main>
 
-  <header>
-    <h1>Travel Planning & Experience Engine</h1>
+    <div class="background"></div>
 
-    <p>
-      Explore destinations through an AntiGravity-inspired travel experience.
-    </p>
-  </header>
-  <div class="ai-badge">
-    Powered by Google Maps & Gemini-inspired AI Planning
-  </div>
+    <!-- HEADER -->
 
-  <div class="planner-box">
+    <header>
 
-    <input type="text" aria-label="Destination Input" id="destinationInput" placeholder="Enter destination..." />
+      <h1>
+        Travel Planning & Experience Engine
+      </h1>
 
-    <button id="addButton" aria-label="Add Destination Button">
-      Add Destination
-    </button>
+      <p>
+        Explore destinations through an
+        AntiGravity-inspired travel experience.
+      </p>
 
-  </div>
+    </header>
 
-  <div id="container"></div>
+    <!-- AI BADGE -->
 
-  <!-- GOOGLE MAPS SECTION -->
+    <div class="ai-badge">
+      Powered by Google Maps &
+      Gemini-inspired AI Planning
+    </div>
 
-  <div class="map-container">
+    <!-- INPUT SECTION -->
 
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d492479.7587212078!2d73.67674846900728!3d15.349486404941008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfba106336b741%3A0xeaf887ff62f34092!2sGoa!5e0!3m2!1sen!2sin!4v1778224072060!5m2!1sen!2sin"
-      width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
+    <div class="planner-box">
 
-  </div>
+      <input type="text" id="destinationInput" aria-label="Destination Input" placeholder="Enter destination..." />
 
-  <!-- TRIP PLANNER PANEL -->
+      <button id="addButton" aria-label="Add Destination Button">
 
-  <div class="info-panel">
+        Add Destination
 
-    <h2>Trip Planner</h2>
-
-    <ul id="tripList"></ul>
-    <div class="travel-info">
-
-      <p>Budget Mode: Smart Saver</p>
-
-      <p>AI Recommendations Enabled</p>
-
-      <p>Live Destination Exploration</p>
+      </button>
 
     </div>
 
-  </div>
+    <!-- FLOATING CARD CONTAINER -->
+
+    <div id="container"></div>
+
+    <!-- GOOGLE MAPS -->
+
+    <div class="map-container">
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d492479.7587212078!2d73.67674846900728!3d15.349486404941008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfba106336b741%3A0xeaf887ff62f34092!2sGoa!5e0!3m2!1sen!2sin!4v1778224072060!5m2!1sen!2sin"
+        width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+    </div>
+
+    <!-- TRIP PLANNER -->
+
+    <div class="info-panel">
+
+      <h2>Trip Planner</h2>
+
+      <ul id="tripList"></ul>
+
+      <div class="travel-info">
+
+        <p>Budget Mode: Smart Saver</p>
+
+        <p>AI Recommendations Enabled</p>
+
+        <p>Live Destination Exploration</p>
+
+      </div>
+
+    </div>
+
+  </main>
 
   <script src="script.js"></script>
 
