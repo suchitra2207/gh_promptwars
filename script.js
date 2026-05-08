@@ -2,7 +2,10 @@ const container = document.getElementById("container");
 const addButton = document.getElementById("addButton");
 const destinationInput = document.getElementById("destinationInput");
 const tripList = document.getElementById("tripList");
+const budgetValue = document.getElementById("budgetValue");
+const itineraryBox = document.getElementById("itineraryBox");
 
+/* GEMINI API KEY */
 const GEMINI_API_KEY = "PASTE_YOUR_API_KEY_HERE";
 
 const defaultDestinations = [
@@ -18,6 +21,7 @@ function createCard(name) {
   const card = document.createElement("div");
 
   card.classList.add("card");
+
   card.innerText = name;
 
   container.appendChild(card);
@@ -31,6 +35,7 @@ function createCard(name) {
   function animate() {
 
     y -= speed;
+
     angle += 0.1;
 
     if (y < -200) {
@@ -47,17 +52,7 @@ function createCard(name) {
 
   animate();
 
-  addTripDestination(name);
-
   enableDragging(card);
-}
-
-function addTripDestination(name) {
-
-  const item = document.createElement("li");
-  item.innerText = name;
-
-  tripList.appendChild(item);
 }
 
 function enableDragging(card) {
@@ -81,45 +76,80 @@ function enableDragging(card) {
   });
 }
 
+function addTripDestination(name) {
+
+  const item = document.createElement("li");
+
+  item.innerText = name;
+
+  tripList.appendChild(item);
+}
+
+function calculateBudget(destination) {
+
+  const randomBudget =
+    Math.floor(Math.random() * 50000) + 10000;
+
+  budgetValue.innerText =
+    `Estimated Budget for ${destination}: ₹${randomBudget}`;
+}
+
 async function generateItinerary(destination) {
 
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: `Create a short 3-day travel itinerary for ${destination}`
-              }
-            ]
-          }
-        ]
-      })
-    }
-  );
+  itineraryBox.innerText =
+    "Generating AI itinerary...";
 
-  const data = await response.json();
+  try {
 
-  const aiText =
-    data.candidates?.[0]?.content?.parts?.[0]?.text ||
-    "AI itinerary unavailable.";
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text:
+                    `Create a short 3-day itinerary for ${destination}`
+                }
+              ]
+            }
+          ]
+        })
+      }
+    );
 
-  alert(aiText);
+    const data = await response.json();
+
+    const text =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "AI itinerary unavailable.";
+
+    itineraryBox.innerText = text;
+
+  } catch (error) {
+
+    itineraryBox.innerText =
+      "Unable to generate itinerary.";
+  }
 }
 
 addButton.addEventListener("click", async () => {
 
-  const value = destinationInput.value.trim();
+  const value =
+    destinationInput.value.trim();
 
   if (value === "") return;
 
   createCard(value);
+
+  addTripDestination(value);
+
+  calculateBudget(value);
 
   await generateItinerary(value);
 
@@ -127,5 +157,8 @@ addButton.addEventListener("click", async () => {
 });
 
 for (let destination of defaultDestinations) {
+
   createCard(destination);
+
+  addTripDestination(destination);
 }
