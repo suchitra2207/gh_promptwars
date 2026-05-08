@@ -16,7 +16,7 @@ const budgetValue =
 const itineraryBox =
   document.getElementById("itineraryBox");
 
-/* GEMINI API KEY */
+/* REAL GEMINI API KEY */
 
 const GEMINI_API_KEY =
   "AIzaSyDxWFh_kUh9PLQKZ6-Ik92kHSIG3qldr-0";
@@ -44,8 +44,6 @@ function createCard(name) {
 
   container.appendChild(card);
 
-  /* RANDOM POSITION */
-
   let x =
     Math.random() *
     (window.innerWidth - 300);
@@ -54,17 +52,11 @@ function createCard(name) {
     Math.random() *
     (window.innerHeight - 300);
 
-  /* FLOAT SPEED */
-
   let speed =
     0.5 + Math.random() * 1.5;
 
-  /* ROTATION */
-
   let angle =
     Math.random() * 360;
-
-  /* ANIMATION */
 
   function animate() {
 
@@ -90,7 +82,7 @@ function createCard(name) {
   enableDragging(card);
 }
 
-/* DRAG FEATURE */
+/* DRAGGING */
 
 function enableDragging(card) {
 
@@ -118,7 +110,7 @@ function enableDragging(card) {
   });
 }
 
-/* ADD DESTINATION */
+/* ADD DESTINATION TO PANEL */
 
 function addTripDestination(name) {
 
@@ -143,7 +135,7 @@ function calculateBudget(destination) {
     `Estimated Budget for ${destination}: ₹${randomBudget}`;
 }
 
-/* GEMINI AI ITINERARY */
+/* REAL GEMINI AI */
 
 async function generateItinerary(destination) {
 
@@ -169,7 +161,7 @@ async function generateItinerary(destination) {
               parts: [
                 {
                   text:
-                    `Create a short and exciting 3-day travel itinerary for ${destination}. Include attractions, food, and activities.`
+                    `Create a fun 3-day travel itinerary for ${destination}. Include attractions, food recommendations, nightlife, and cultural experiences.`
                 }
               ]
             }
@@ -178,10 +170,12 @@ async function generateItinerary(destination) {
       }
     );
 
+    console.log("Gemini Response:", response);
+
     const data =
       await response.json();
 
-    console.log(data);
+    console.log("Gemini Data:", data);
 
     const text =
       data?.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -216,23 +210,13 @@ addButton.addEventListener(
 
     if (value === "") return;
 
-    /* CREATE CARD */
-
     createCard(value);
-
-    /* ADD TO LIST */
 
     addTripDestination(value);
 
-    /* CALCULATE BUDGET */
-
     calculateBudget(value);
 
-    /* GENERATE AI ITINERARY */
-
     await generateItinerary(value);
-
-    /* CLEAR INPUT */
 
     destinationInput.value = "";
   }
@@ -260,7 +244,7 @@ for (let destination of defaultDestinations) {
   addTripDestination(destination);
 }
 
-/* STARTUP MESSAGE */
+/* INITIAL MESSAGE */
 
 itineraryBox.innerText =
-  "Gemini AI itinerary recommendations will appear here.";
+  "Gemini AI travel itineraries will appear here.";
